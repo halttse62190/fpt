@@ -1,0 +1,30 @@
+USE EmployeeManagementSystem
+GO
+Alter Table EMPLOYEE
+ADD CHECK (Level>=1 AND Level <=7)
+GO
+ALTER TABLE EMP_SKILL ADD CHECK (SkillLevel >=1 AND SkillLevel <=3)
+GO
+ALTER TABLE EMPLOYEE ADD UNIQUE(Email)
+GO
+/*
+ALTER TABLE EMPLOYEE 
+ALTER COLUMN MgrNo varchar SET DEFAULT ('0')
+--ALTER TABLE EMPLOYEE
+--ALTER COLUMN [Status] SET DEFAULT '0'
+*/
+--alter table EMPLOYEE add constraint MgrNo default '0' for MgrNo
+ALTER TABLE EMPLOYEE 
+   ALTER COLUMN MgrNo SET DEFAULT '0';
+ALTER TABLE EMPLOYEE 
+   ALTER COLUMN Status SET DEFAULT '0';
+/**
+Q4. create view 
+**/
+GO
+CREATE VIEW vwEMPLOYEE_TRACKING
+AS
+SELECT e.EmpNo, e.EmpName, e.Level
+FROM EMPLOYEE e
+WHERE e.Level>=3 AND e.Level<=5
+
